@@ -62,5 +62,6 @@
       snowBalls.forEach((snowBall) => moveSnowBall(canvas, snowBall)); //ขยับทุกๆ 50 มิลิเซก
     }, 50);
   }
+  
   run(); //เรียกใช้ function run ด้านบน
 })();
