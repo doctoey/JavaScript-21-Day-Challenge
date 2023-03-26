@@ -76,7 +76,7 @@
   // 4. Async/Await การทำงานเหมือน promise ใช้ฟังก์ชั่นเดียวกันได้
 
   function simulateAsyncAPI(text, timeout) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { //parameter  resolve และ reject *****
       setTimeout(() => {
         if (text === 'B') return reject('B got rejected');
 
@@ -86,15 +86,16 @@
     });
   }
 
-  async function run() {
+  async function run() { //async อยู่ด้านหน้า function และไส้ในก็ต้องตามด้วย await เสมอ
     try { //ถ้าไม่ใส่ try ครอบ จะพบ error เนื่องจากเรายังไม่ได้ handle error ที่ throw มาจาก asynchronous นั่นเอง
       await simulateAsyncAPI('A', 1000); //หยุดรอจนกระทั่ง A ทำงานเสร็จ
       await simulateAsyncAPI('B', 500);  // B got rejected ถ้าใส่ text === B
       await simulateAsyncAPI('C', 100);  //ถ้าไม่มี if ก็ทำงานปกติเลย A B C ถ้ามี ก็หยุดที่ B 
-    } catch (error) {
+    } catch (error) { //เหมือน promise ข้างบนเลย
       console.error(error);
     }
   }
+
   run();
 
 })();
